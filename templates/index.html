@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Trade Me</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type=text/javascript>
+            $(function() {
+              $('a#test').on('click', function(e) {
+                e.preventDefault()
+                $.getJSON('/bookmarkit',
+                    function(data) {
+                  //do nothing
+                });
+                return false;
+              });
+            });
+    </script>
+
+</head>
+<body>
+  
+    <nav class="top">
+        <div class="top-inner">
+                  <div class="logo-nav">
+                  <div class="icon-nav"><i class="fa fa-line-chart" aria-hidden="true"></i></div>
+                <div class="heading-nav"><a href="/"> TradeMe</a></div>
+        </div>
+            <div class="en"><a href="#">EN</a></div>
+            <div class="searchbar">
+                  <div class="search-logo"><a href="#" class="fa fa-search"></a></div> 
+                  <form class="myform" action="/search" method="POST">  
+                <input type="text" name="searchfor" placeholder="search"/> 
+                </form>
+        </div>
+            {% if loginfail %} 
+            <div class="sign-in"><a href="/login">SignIn</a></div>
+            {% else %} 
+            {% if username %}
+            <div class="sign-in"><a href="/logout">Logout</a></div> 
+            {% else %} 
+            <div class="sign-in"><a href="/login">SignIn</a></div> 
+            {% endif %}
+            {% endif %}
+            <div class="freetrail"><button><a href="./pricing.html"> Start Free Trail</a></button> </div>  
+        </div>
+         
+        </nav>
+          <div class="dd-list">
+                  <ul>
+                      <li class="chart"><a href="#"><div class="chartt"><i class="fa fa-signal" aria-hidden="true"></i></div>Chart</a></li>
+                    <li><a href="./trade.html">Trade</a>
+                        <div class="sub-menu-1">
+                              <ul>
+                                  <li><a href="./trade.html">Top Brokers</a></li>
+                                <li><a href="./trade.html"> Brokers Awards</a></li>
+                        </ul>
+                    </div>
+                </li>
+                  <li><a href="./market.html">Markets</a>
+                        <div class="sub-menu-1">
+                              <ul>
+                                  <li><a href="./market.html">cryptocurrencies</a><i class="fa fa-angle-right"></i></li>
+                                <li><a href="./market.html">currencies</a><i class="fa fa-angle-right"></i></li>
+                                <li><a href="./market.html">stocks</a><i class="fa fa-angle-right"></i></li>
+                                <li><a href="./market.html">indices</a><i class="fa fa-angle-right"></i></li>
+                                <li><a href="./market.html">Futures</a><i class="fa fa-angle-right"></i></li>
+                                <li><a href="./market.html">bond</a><i class="fa fa-angle-right"></i></li>
+                        </ul>
+                    </div>
+                </li>
+                  <li><a href="./screener.html">Screeners</a>
+                        <div class="sub-menu-1">
+                              <ul>
+                                  <li><a href="./screener.html">Stock screener</a></li>
+                                <li><a href="./screener.html">Forex screener</a></li>
+                                <li><a href="./screener.html">Crypto screener</a></li>
+                        </ul>
+                    </div>
+                </li>
+                  <li><a href="./feed.html">Feed</a>
+                        <div class="sub-menu-1">
+                              <ul>
+                                  <li><a href="./feed.html">Ideas</a><i class="fa fa-angle-right"></i></li>
+                                <li><a href="./feed.html">Script</a><i class="fa fa-angle-right"></i></li>
+                            </ul>
+                        </div>
+                </li>
+                  <li><a href="./help.html">More</a>
+                        <div class="sub-menu-1">
+                              <ul>
+                                  <li><a href="./help.html">Help Center</a></li>
+                                <li><a href="./pricing.html">Pricing</a></li>
+                                <li><a href="./help.html">About</a><i class="fa fa-angle-right"></i></li>
+                                <li><a href="./help.html">Community</a><i class="fa fa-angle-right"></i></li>
+                                <li><a href="./help.html">For Business</a><i class="fa fa-angle-right"></i></li>
+                            </ul>
+                        </div>
+
+                </li>
+            </ul>
+        </div>
+
+          <div class="line-header line-header--sticky"></div>
+          <div class="sec-two">
+                  <div class="sec-two-content">
+                      <p>
+                          Best way To Learn About The Market
+                      </p>
+            </div>
+              <div class="sec-two-launch">
+                      <a href="#"> Launch Chart </a>
+            </div>
+        </div>
+        <br>
+        <table>
+          {% if username %} 
+          {% if bookmarks %}
+             {% for bookmark in bookmarks %} 
+              <a href="/api/{{bookmark}}"> {{bookmark}}</a>&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;
+          <a href="/delete/{{bookmark}}"><button>X</button></a>
+             {% endfor %}   
+          {% endif %}
+          {% endif %} 
+          {% if symbols_list %}
+        </br>
+              {% for symbol in symbols_list %}
+                <tr><td><a id ="sym_list" href="/api/{{symbol}}"> {{symbol}}</a>
+                       </br>
+                  </td></tr>
+              {% endfor %}
+              
+          {% endif %}
+          <!--index page news-->
+          {% if homeNews %}
+          {% for i in range(homeNews|length) %}
+          <a href="">{{homeNews[i]["content"]["title"]}}</a>
+</br>
+          {% endfor %}
+      {% endif %} 
+
+          {% if news %}   
+          <div class="content">
+              <div id="stock-value">{{stockValue}}({{symbol}})</div> 
+              {% if username %}
+              <form action="/bookmarkit" method="POST">
+                  <a href=# id=test><button type="submit" value="{{symbol}}" name="stock">Add to bookmark</button></a>
+              </form>
+              {% endif %}
+          <div class="quotes-graph">
+              <div id="quotes"> 
+              <div class="quote-column">
+               <text>Previous Close : {{quotes["quoteResponse"]["result"][0]["regularMarketPreviousClose"]}}</text>   
+                  <text>Open : {{quotes["quoteResponse"]["result"][0]["regularMarketOpen"]}}</text>
+                  <text>Volume : {{quotes["quoteResponse"]["result"][0]["regularMarketVolume"]}}</text>
+              </div> 
+              <div class="quote-column"> 
+                  <text>Market Cap : {{quotes["quoteResponse"]["result"][0]["marketCap"]}}</text>
+                  <text>Beta : {{quotes["quoteResponse"]["result"][0]["beta"]}}</text>
+                  <text>PE Ratio(TTM) : {{quotes["quoteResponse"]["result"][0]["trailingPE"]}}</text>
+              </div> 
+              </div> 
+             <div id="graph">
+                 
+             </div>
+          </div>
+          <div id="news-details">
+              <div>
+                  {% for i in range(news["news"]|length) %}
+              <div id="news">
+              <a id="news-item" href="{{news['news'][i]['link']}}" target="_blank">{{news['news'][i]['title']}}</a>  
+              </div> 
+              {% endfor %}
+              </div> 
+              <div>
+                  <table> 
+                  <h3>People also watch</h3> 
+                      <tr>
+                          <th>Symbols</th>
+                          <th>Last Price</th>
+                          <th>Change</th>
+                          <th>%Change</th>
+                      </tr> 
+                      {% for i in range(recs["finance"]["result"][0]["count"]) %}
+                      <tr> 
+                          <td>{{recs["finance"]["result"][0]["quotes"][i]["symbol"]}}</td>
+                          <td>{{recs["finance"]["result"][0]["quotes"][i]["regularMarketPrice"]}}</td>
+                          <td>{{recs["finance"]["result"][0]["quotes"][i]["regularMarketChange"]}}</td>
+                          <td>{{recs["finance"]["result"][0]["quotes"][i]["regularMarketChangePercent"]}}</td> 
+                      </tr>
+                      {% endfor %}
+                  </table>
+              </div>
+              
+          </div> 
+      </div>
+      {% endif %}  
+
+  </table>
+        <!-- displaying the contents of particular stocks -->
+      <!--  <div class="content">
+          <table>
+            {% if response %}   
+            <h3 style="color: black;">News:</h1> 
+            {% for i in range(newslen) %}
+            <a href="{{response['news'][i]['link']}}" target="_blank">{{response['news'][i]['title']}}</a>  
+            {% endfor %}
+            {% endif %} 
+            </table>
+        </div>
+        -->
+        {% if response %}  
+            
+        <div class="content1">
+           <div id="stock-value">{{stockValue}}({{symbol}})</div>
+            
+            <table><
+            <div class="quotes-graph">
+            <div id="quotes"> 
+            <div class="quote-column">
+                <text>Previous Close : {{quotes["regularMarketPreviousClose"]}}</text>
+            
+            <text>quote1:</text>
+                <text>quote1:</text>
+            </div>
+        
+            <div class="quote-column"> 
+                <text>quote1:</text>
+                <text>quote1:</text>
+                <text>quote1:</text>
+            </div> 
+            
+            </div> 
+            
+            
+           <div id="graph">
+               
+           </div>
+        </div>
+        {% for i in range(newslen) %}
+        <div id="news">
+        <a id="news_item" href="{{response['news'][i]['link']}}" target="_blank">{{response['news'][i]['title']}}</a>  
+        </div>
+        <div></div>
+  {% endfor %} 
+</div>
+
+{% endif %}  
+      <div class="sec-three">
+        
+      <div class="left-side-ideas">
+          
+          <div class="head1">
+              <h1><a href="#"> Editor's Picks <i class="fa fa-angle-right" id="righticon"></i></a></h1>
+    </div>
+      <div class="padd btw">
+          <div class="ed-pick">
+               <div class="ed-pick-title">
+                   <a href="#">Lorem ipsum dolor sit amet kams skadmaks.</a>
+         </div>
+           <div class="nfty">NIFTY</div>
+           <div class="nftyimg"><img src="./nfty.png" alt="NIFTY"></div>
+          <div class="review">
+                  <div class="toprow">
+                  <div class="icon">
+                      <img src="./nameicon.jpg" alt="ICON">
+            </div>
+              <div class="name">
+                        <a href="#">User</a> 
+            </div>
+        </div>
+              <div class="content">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis qui reprehenderit ipsa iure excepturi beatae nemo deserunt mollitia natus dicta. Eos provident similique inventore a unde, officiis corrupti sunt maxime laborum vitae.</p>
+            </div>
+        </div>
+          <div class="like-comment">
+                  <div class="like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+              <div class="comment"><i class="fa fa-comments-o" aria-hidden="true"></i></div>
+              <div class="share"><i class="fa fa-share-alt" aria-hidden="true"></i></div>
+              <div class="follow"><i class="fa fa-bookmark-o" aria-hidden="true"></i></div>
+        </div>
+        </div>
+    </div>
+      <div class="padd btw">
+              <div class="ed-pick">
+                   <div class="ed-pick-title">
+                       <a href="#">Lorem ipsum dolor sit amet kams skadmaks.</a>
+             </div>
+               <div class="nfty">NIFTY</div>
+               <div class="nftyimg"><img src="./nfty.png" alt="NIFTY"></div>
+              <div class="review">
+                      <div class="toprow">
+                      <div class="icon">
+                          <img src="./nameicon.jpg" alt="ICON">
+                </div>
+                  <div class="name">
+                            <a href="#">User</a> 
+                </div>
+            </div>
+                  <div class="content">
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis qui reprehenderit ipsa iure excepturi beatae nemo deserunt mollitia natus dicta. Eos provident similique inventore a unde, officiis corrupti sunt maxime laborum vitae.</p>
+                </div>
+            </div>
+              <div class="like-comment">
+                      <div class="like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+                  <div class="comment"><i class="fa fa-comments-o" aria-hidden="true"></i></div>
+                  <div class="share"><i class="fa fa-share-alt" aria-hidden="true"></i></div>
+                  <div class="follow"><i class="fa fa-bookmark-o" aria-hidden="true"></i></div>
+            </div>
+            </div>
+        </div>
+          <div class="more"><a href="#">More Editors' picks ideas > </a></div>
+             <!-- stocks  -->
+          <div class="head1 box-1">
+                  <h1><a href="#"> Stock Idea's <i class="fa fa-angle-right" id="righticon"></i></a></h1>
+        </div>
+          <div class="padd btw">
+              <div class="ed-pick">
+                   <div class="ed-pick-title">
+                       <a href="#">Lorem ipsum dolor sit amet kams skadmaks.</a>
+             </div>
+               <div class="nfty">Airtel</div>
+               <div class="nftyimg"><img src="./nfty.png" alt="NIFTY"></div>
+              <div class="review">
+                      <div class="toprow">
+                      <div class="icon">
+                          <img src="./nameicon.jpg" alt="ICON">
+                </div>
+                  <div class="name">
+                            <a href="#">User</a> 
+                </div>
+            </div>
+                  <div class="content">
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis qui reprehenderit ipsa iure excepturi beatae nemo deserunt mollitia natus dicta. Eos provident similique inventore a unde, officiis corrupti sunt maxime laborum vitae.</p>
+                </div>
+            </div>
+              <div class="like-comment">
+                      <div class="like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+                  <div class="comment"><i class="fa fa-comments-o" aria-hidden="true"></i></div>
+                  <div class="share"><i class="fa fa-share-alt" aria-hidden="true"></i></div>
+                  <div class="follow"><i class="fa fa-bookmark-o" aria-hidden="true"></i></div>
+            </div>
+            </div>
+        </div>
+          <div class="padd btw">
+                  <div class="ed-pick">
+                       <div class="ed-pick-title">
+                           <a href="#">Lorem ipsum dolor sit amet kams skadmaks.</a>
+                 </div>
+                   <div class="nfty">ITC</div>
+                   <div class="nftyimg"><img src="./nfty.png" alt="NIFTY"></div>
+                  <div class="review">
+                          <div class="toprow">
+                          <div class="icon">
+                              <img src="./nameicon.jpg" alt="ICON">
+                    </div>
+                      <div class="name">
+                                <a href="#">User</a> 
+                    </div>
+                </div>
+                      <div class="content">
+                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis qui reprehenderit ipsa iure excepturi beatae nemo deserunt mollitia natus dicta. Eos provident similique inventore a unde, officiis corrupti sunt maxime laborum vitae.</p>
+                    </div>
+                </div>
+                  <div class="like-comment">
+                          <div class="like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+                      <div class="comment"><i class="fa fa-comments-o" aria-hidden="true"></i></div>
+                      <div class="share"><i class="fa fa-share-alt" aria-hidden="true"></i></div>
+                      <div class="follow"><i class="fa fa-bookmark-o" aria-hidden="true"></i></div>
+                </div>
+                </div>
+            </div>
+              <div class="more"><a href="#">More Stocks ideas > </a></div>
+              
+              
+              <!-- forex -->
+              <div class="head1 box-1">
+                      <h1><a href="#"> Forex Idea's <i class="fa fa-angle-right" id="righticon"></i></a></h1>
+            </div>
+              <div class="padd btw">
+                  <div class="ed-pick">
+                       <div class="ed-pick-title">
+                           <a href="#">Lorem ipsum dolor sit amet kams skadmaks.</a>
+                 </div>
+                   <div class="nfty">USDINR</div>
+                   <div class="nftyimg"><img src="./nfty.png" alt="NIFTY"></div>
+                  <div class="review">
+                          <div class="toprow">
+                          <div class="icon">
+                              <img src="./nameicon.jpg" alt="ICON">
+                    </div>
+                      <div class="name">
+                                <a href="#">User</a> 
+                    </div>
+                </div>
+                      <div class="content">
+                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis qui reprehenderit ipsa iure excepturi beatae nemo deserunt mollitia natus dicta. Eos provident similique inventore a unde, officiis corrupti sunt maxime laborum vitae.</p>
+                    </div>
+                </div>
+                  <div class="like-comment">
+                          <div class="like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+                      <div class="comment"><i class="fa fa-comments-o" aria-hidden="true"></i></div>
+                      <div class="share"><i class="fa fa-share-alt" aria-hidden="true"></i></div>
+                      <div class="follow"><i class="fa fa-bookmark-o" aria-hidden="true"></i></div>
+                </div>
+                </div>
+            </div>
+              <div class="padd btw">
+                      <div class="ed-pick">
+                           <div class="ed-pick-title">
+                               <a href="#">Lorem ipsum dolor sit amet kams skadmaks.</a>
+                     </div>
+                       <div class="nfty">GBPUSD</div>
+                       <div class="nftyimg"><img src="./nfty.png" alt="NIFTY"></div>
+                      <div class="review">
+                              <div class="toprow">
+                              <div class="icon">
+                                  <img src="./nameicon.jpg" alt="ICON">
+                        </div>
+                          <div class="name">
+                                    <a href="#">User</a> 
+                        </div>
+                    </div>
+                          <div class="content">
+                                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis qui reprehenderit ipsa iure excepturi beatae nemo deserunt mollitia natus dicta. Eos provident similique inventore a unde, officiis corrupti sunt maxime laborum vitae.</p>
+                        </div>
+                    </div>
+                      <div class="like-comment">
+                              <div class="like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+                          <div class="comment"><i class="fa fa-comments-o" aria-hidden="true"></i></div>
+                          <div class="share"><i class="fa fa-share-alt" aria-hidden="true"></i></div>
+                          <div class="follow"><i class="fa fa-bookmark-o" aria-hidden="true"></i></div>
+                    </div>
+                    </div>
+                </div>
+                  <div class="more"><a href="#">More Forex ideas > </a></div>
+          
+          
+                  <!-- crypto -->
+                  <div class="head1 box-1">
+                          <h1><a href="#"> Crypto Idea's <i class="fa fa-angle-right" id="righticon"></i></a></h1>
+                </div>
+                  <div class="padd btw">
+                      <div class="ed-pick">
+                           <div class="ed-pick-title">
+                               <a href="#">Lorem ipsum dolor sit amet kams skadmaks.</a>
+                     </div>
+                       <div class="nfty">BITCOIN</div>
+                       <div class="nftyimg"><img src="./nfty.png" alt="NIFTY"></div>
+                      <div class="review">
+                              <div class="toprow">
+                              <div class="icon">
+                                  <img src="./nameicon.jpg" alt="ICON">
+                        </div>
+                          <div class="name">
+                                    <a href="#">User</a> 
+                        </div>
+                    </div>
+                          <div class="content">
+                                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis qui reprehenderit ipsa iure excepturi beatae nemo deserunt mollitia natus dicta. Eos provident similique inventore a unde, officiis corrupti sunt maxime laborum vitae.</p>
+                        </div>
+                    </div>
+                      <div class="like-comment">
+                              <div class="like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+                          <div class="comment"><i class="fa fa-comments-o" aria-hidden="true"></i></div>
+                          <div class="share"><i class="fa fa-share-alt" aria-hidden="true"></i></div>
+                          <div class="follow"><i class="fa fa-bookmark-o" aria-hidden="true"></i></div>
+                    </div>
+                    </div>
+                </div>
+                  <div class="padd btw">
+                          <div class="ed-pick">
+                               <div class="ed-pick-title">
+                                   <a href="#">Lorem ipsum dolor sit amet kams skadmaks.</a>
+                         </div>
+                           <div class="nfty">Ethurium</div>
+                           <div class="nftyimg"><img src="./nfty.png" alt="NIFTY"></div>
+                          <div class="review">
+                                  <div class="toprow">
+                                  <div class="icon">
+                                      <img src="./nameicon.jpg" alt="ICON">
+                            </div>
+                              <div class="name">
+                                        <a href="#">User</a> 
+                            </div>
+                        </div>
+                              <div class="content">
+                                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis qui reprehenderit ipsa iure excepturi beatae nemo deserunt mollitia natus dicta. Eos provident similique inventore a unde, officiis corrupti sunt maxime laborum vitae.</p>
+                            </div>
+                        </div>
+                          <div class="like-comment">
+                                  <div class="like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+                              <div class="comment"><i class="fa fa-comments-o" aria-hidden="true"></i></div>
+                              <div class="share"><i class="fa fa-share-alt" aria-hidden="true"></i></div>
+                              <div class="follow"><i class="fa fa-bookmark-o" aria-hidden="true"></i></div>
+                        </div>
+                        </div>
+                    </div>
+                      <div class="more"><a href="#">More crypto ideas > </a></div>
+                      
+                      <!-- index -->
+                      <div class="head1 box-1">
+                              <h1><a href="#"> Index Idea's <i class="fa fa-angle-right" id="righticon"></i></a></h1>
+                    </div>
+                      <div class="padd btw">
+                          <div class="ed-pick">
+                               <div class="ed-pick-title">
+                                   <a href="#">Lorem ipsum dolor sit amet kams skadmaks.</a>
+                         </div>
+                           <div class="nfty">BANKNIFTY</div>
+                           <div class="nftyimg"><img src="./nfty.png" alt="NIFTY"></div>
+                          <div class="review">
+                                  <div class="toprow">
+                                  <div class="icon">
+                                      <img src="./nameicon.jpg" alt="ICON">
+                            </div>
+                              <div class="name">
+                                        <a href="#">User</a> 
+                            </div>
+                        </div>
+                              <div class="content">
+                                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis qui reprehenderit ipsa iure excepturi beatae nemo deserunt mollitia natus dicta. Eos provident similique inventore a unde, officiis corrupti sunt maxime laborum vitae.</p>
+                            </div>
+                        </div>
+                          <div class="like-comment">
+                                  <div class="like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+                              <div class="comment"><i class="fa fa-comments-o" aria-hidden="true"></i></div>
+                              <div class="share"><i class="fa fa-share-alt" aria-hidden="true"></i></div>
+                              <div class="follow"><i class="fa fa-bookmark-o" aria-hidden="true"></i></div>
+                        </div>
+                        </div>
+                    </div>
+                      <div class="padd btw">
+                              <div class="ed-pick">
+                                   <div class="ed-pick-title">
+                                       <a href="#">Lorem ipsum dolor sit amet kams skadmaks.</a>
+                             </div>
+                               <div class="nfty">NIFTY</div>
+                               <div class="nftyimg"><img src="./nfty.png" alt="NIFTY"></div>
+                              <div class="review">
+                                      <div class="toprow">
+                                      <div class="icon">
+                                          <img src="./nameicon.jpg" alt="ICON">
+                                </div>
+                                  <div class="name">
+                                            <a href="#">User</a> 
+                                </div>
+                            </div>
+                                  <div class="content">
+                                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis qui reprehenderit ipsa iure excepturi beatae nemo deserunt mollitia natus dicta. Eos provident similique inventore a unde, officiis corrupti sunt maxime laborum vitae.</p>
+                                </div>
+                            </div>
+                              <div class="like-comment">
+                                      <div class="like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+                                  <div class="comment"><i class="fa fa-comments-o" aria-hidden="true"></i></div>
+                                  <div class="share"><i class="fa fa-share-alt" aria-hidden="true"></i></div>
+                                  <div class="follow"><i class="fa fa-bookmark-o" aria-hidden="true"></i></div>
+                            </div>
+                            </div>
+                        </div>
+                          <div class="more"><a href="#">More Index ideas > </a></div>
+                          
+                          <!-- future -->
+                          <div class="head1 box-1">
+                                  <h1><a href="#"> Futures Idea's <i class="fa fa-angle-right" id="righticon"></i></a></h1>
+                        </div>
+                          <div class="padd btw">
+                              <div class="ed-pick">
+                                   <div class="ed-pick-title">
+                                       <a href="#">ASIAN PAINT FUTURES</a>
+                             </div>
+                               <div class="nfty">ASIAN PAINT!</div>
+                               <div class="nftyimg"><img src="./nfty.png" alt="NIFTY"></div>
+                              <div class="review">
+                                      <div class="toprow">
+                                      <div class="icon">
+                                          <img src="./nameicon.jpg" alt="ICON">
+                                </div>
+                                  <div class="name">
+                                            <a href="#">User</a> 
+                                </div>
+                            </div>
+                                  <div class="content">
+                                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis qui reprehenderit ipsa iure excepturi beatae nemo deserunt mollitia natus dicta. Eos provident similique inventore a unde, officiis corrupti sunt maxime laborum vitae.</p>
+                                </div>
+                            </div>
+                              <div class="like-comment">
+                                      <div class="like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+                                  <div class="comment"><i class="fa fa-comments-o" aria-hidden="true"></i></div>
+                                  <div class="share"><i class="fa fa-share-alt" aria-hidden="true"></i></div>
+                                  <div class="follow"><i class="fa fa-bookmark-o" aria-hidden="true"></i></div>
+                            </div>
+                            </div>
+                        </div>
+                          <div class="padd btw">
+                                  <div class="ed-pick">
+                                       <div class="ed-pick-title">
+                                           <a href="#">Lorem ipsum dolor sit amet kams skadmaks.</a>
+                                 </div>
+                                   <div class="nfty">NIFTY</div>
+                                   <div class="nftyimg"><img src="./nfty.png" alt="NIFTY"></div>
+                                  <div class="review">
+                                          <div class="toprow">
+                                          <div class="icon">
+                                              <img src="./nameicon.jpg" alt="ICON">
+                                    </div>
+                                      <div class="name">
+                                                <a href="#">User</a> 
+                                    </div>
+                                </div>
+                                      <div class="content">
+                                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis qui reprehenderit ipsa iure excepturi beatae nemo deserunt mollitia natus dicta. Eos provident similique inventore a unde, officiis corrupti sunt maxime laborum vitae.</p>
+                                    </div>
+                                </div>
+                                  <div class="like-comment">
+                                          <div class="like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+                                      <div class="comment"><i class="fa fa-comments-o" aria-hidden="true"></i></div>
+                                      <div class="share"><i class="fa fa-share-alt" aria-hidden="true"></i></div>
+                                      <div class="follow"><i class="fa fa-bookmark-o" aria-hidden="true"></i></div>
+                                </div>
+                                </div>
+                            </div>
+                              <div class="more"><a href="#">More Future ideas > </a></div>
+                              <!-- educational -->
+                               
+                              
+                              <div class="head1 box-1">
+                                      <h1><a href="#"> Educational Idea's <i class="fa fa-angle-right" id="righticon"></i></a></h1>
+                            </div>
+                              <div class="padd btw">
+                                  <div class="ed-pick">
+                                       <div class="ed-pick-title">
+                                           <a href="#">Lorem ipsum dolor sit amet.</a>
+                                 </div>
+                                   <div class="nfty">ASIAN PAINT!</div>
+                                   <div class="nftyimg"><img src="./nfty.png" alt="NIFTY"></div>
+                                  <div class="review">
+                                          <div class="toprow">
+                                          <div class="icon">
+                                              <img src="./nameicon.jpg" alt="ICON">
+                                    </div>
+                                      <div class="name">
+                                                <a href="#">User</a> 
+                                    </div>
+                                </div>
+                                      <div class="content">
+                                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis qui reprehenderit ipsa iure excepturi beatae nemo deserunt mollitia natus dicta. Eos provident similique inventore a unde, officiis corrupti sunt maxime laborum vitae.</p>
+                                    </div>
+                                </div>
+                                  <div class="like-comment">
+                                          <div class="like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+                                      <div class="comment"><i class="fa fa-comments-o" aria-hidden="true"></i></div>
+                                      <div class="share"><i class="fa fa-share-alt" aria-hidden="true"></i></div>
+                                      <div class="follow"><i class="fa fa-bookmark-o" aria-hidden="true"></i></div>
+                                </div>
+                                </div>
+                            </div>
+                              <div class="padd btw">
+                          <div class="ed-pick">
+                               <div class="ed-pick-title">
+                                   <a href="#">Lorem ipsum dolor sit amet kams skadmaks.</a>
+                         </div>
+                           <div class="nfty">NIFTY</div>
+                           <div class="nftyimg"><img src="./nfty.png" alt="NIFTY"></div>
+                          <div class="review">
+                                  <div class="toprow">
+                                  <div class="icon">
+                                      <img src="./nameicon.jpg" alt="ICON">
+                            </div>
+                              <div class="name">
+                                        <a href="#">User</a> 
+                            </div>
+                        </div>
+                              <div class="content">
+                                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis qui reprehenderit ipsa iure excepturi beatae nemo deserunt mollitia natus dicta. Eos provident similique inventore a unde, officiis corrupti sunt maxime laborum vitae.</p>
+                            </div>
+                        </div>
+                          <div class="like-comment">
+                                  <div class="like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+                              <div class="comment"><i class="fa fa-comments-o" aria-hidden="true"></i></div>
+                              <div class="share"><i class="fa fa-share-alt" aria-hidden="true"></i></div>
+                              <div class="follow"><i class="fa fa-bookmark-o" aria-hidden="true"></i></div>
+                        </div>
+                        </div>
+                    </div>
+                      <div class="more"><a href="#">More Educational ideas > </a></div>
+        </div> 
+        <div class="right-side-items">
+          <div class="head1">
+            <h1><a href="#"> Market Summary <i class="fa fa-angle-right" id="righticon"></i></a></h1>
+    </div>
+      <div class="diff-market-out">
+          <div class="tab-container">
+            <div class="button-container">
+          <button onclick="showpanel(0,'rgb(235, 244, 250)')">Indices</button>
+          <button onclick="showpanel(1,'rgb(235, 244, 250)')">Currencies</button>
+          <button onclick="showpanel(2,'rgb(235, 244, 250)')">Futures</button>
+          <button onclick="showpanel(3,'rgb(235, 244, 250)')">Crypto</button>
+          <button onclick="showpanel(4,'rgb(235, 244, 250)')">Bonds</button>
+        </div>
+        <div class="tab-panel"><img src="./nifty.jpg" alt="img1"></div>
+        <div class="tab-panel"><img src="./graph.png" alt="img2"></div>
+        <div class="tab-panel"><img src="./graph2.png" alt="img3"></div>
+        <div class="tab-panel"><img src="./graph.png" alt="img4"></div>
+        <div class="tab-panel"><img src="./graph2.png" alt="img5"></div>
+        </div>
+        </div>
+        <div class="stocks">
+        <div class="stock" onclick="highlight(0,'rgb(235, 244, 250)')">
+          <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+          <div class="stock-name"><a href="#"> Nifty</a></div>
+          <div class="stock-bottom">NIFTY 50 INDEX</div> 
+          <div class="rand">15000.25</div>
+          <div class="per1-1">-0.13%</div>
+          <div class="per2-1">-20.10</div>
+        </div>
+        <div class="stock" onclick="highlight(1,'rgb(235, 244, 250)')">
+          <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+          <div class="stock-name"><a href="#">BSE SENSEX</a></div>
+          <div class="stock-bottom-1">BSE SENSEX INDEX</div> 
+          <div class="rand">15500.25</div>
+          <div class="per1-2">+1.13%</div>
+          <div class="per2-2">+50.120</div>
+        </div>
+        <div class="stock" onclick="highlight(2,'rgb(235, 244, 250)')">
+          <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+          <div class="stock-name"><a href="#"> Nifty</a></div>
+          <div class="stock-bottom">NIFTY 50 INDEX</div> 
+          <div class="rand">15040.25</div>
+          <div class="per1-3">+0.01%</div>
+          <div class="per2-3">+0.10</div>
+        </div>
+        <div class="stock" onclick="highlight(3,'rgb(235, 244, 250)')">
+          <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+          <div class="stock-name"><a href="#"> Nifty</a></div>
+          <div class="stock-bottom">NIFTY 50 INDEX</div> 
+          <div class="rand">15000.25</div>
+          <div class="per1-1">-0.13%</div>
+          <div class="per2-1">-20.10</div>
+        </div>
+      </div>
+      <div class="more"><a href="#">More Indices ideas > </a></div>
+      <div class="broker">
+      <div class="head1">
+        <h1><a href="./trade.html">Broker's <i class="fa fa-angle-right" id="righticon"></i></a></h1>
+      </div>
+      <div class="broker-heading">
+      <div class="logo-broker"><img src="./broker-logo.png" alt="A"></div>
+      <div class="nameofbroker"><a href="https://zerodha.com/"> Zerodha.com </a></div>
+      <div class="bottom-broker">Currencies , stocks , Cfds</div>
+    </div>
+    <div class="line"></div>
+    <div class="broker-heading">
+      <div class="logo-broker"><img src="./broker-logo1.jpg" alt="A"></div>
+      <div class="nameofbroker"><a href="https://zerodha.com/">StockMe.com </a></div>
+      <div class="bottom-broker">Currencies , stocks , Cfds , crypto</div>
+    </div>
+    <div class="line"></div>
+    <div class="broker-heading">
+      <div class="logo-broker"><img src="./broker-logo.png" alt="A"></div>
+      <div class="nameofbroker"><a href="https://zerodha.com/">Trademe.com </a></div>
+      <div class="bottom-broker">Currencies , stocks , bonds</div>
+    </div>
+    <div class="line"></div>
+    <div class="more"><a href="./trade.html">More Brokers > </a></div>
+    </div>
+    <div class="stock-part">
+      <div class="top-part">
+      <div class="logo-stock-1"><img src="./stock-logo.png" alt="india"></div>
+      <div class="head2">
+        <h1><a href="#">Stock's <i class="fa fa-angle-right" id="righticon"></i></a></h1>
+      </div>
+    </div>
+    <div class="stocks">
+      <div class="stock" onclick="highlight(0,'rgb(235, 244, 250)')">
+        <div class="logo-stock"><img src="./broker-logo.png" alt="logo"></div>
+        <div class="stock-name"><a href="#">IDEA</a></div>
+        <div class="stock-bottom">IDEA INDEX</div> 
+        <div class="rand">15000.25</div>
+        <div class="per1-1">-0.13%</div>
+        <div class="per2-1">-20.10</div>
+      </div>
+    <div class="line"></div>
+
+      <div class="stock" onclick="highlight(1,'rgb(235, 244, 250)')">
+        <div class="logo-stock"><img src="./broker-logo1.jpg" alt="logo"></div>
+        <div class="stock-name"><a href="#">Bitco</a></div>
+        <div class="stock-bottom">BITCO 50 INDEX</div> 
+        <div class="rand">15000.25</div>
+        <div class="per1-1">-0.13%</div>
+        <div class="per2-1">-20.10</div>
+      </div>
+    <div class="line"></div>
+
+      <div class="stock" onclick="highlight(2,'rgb(235, 244, 250)')">
+        <div class="logo-stock"><img src="./broker-logo.png" alt="logo"></div>
+        <div class="stock-name"><a href="#"> Airtel</a></div>
+        <div class="stock-bottom">AIRTEL 50 INDEX</div> 
+        <div class="rand">15040.25</div>
+        <div class="per1-3">+0.01%</div>
+        <div class="per2-3">+0.10</div>
+      </div>
+    <div class="line"></div>
+
+
+      <div class="stock" onclick="highlight(3,'rgb(235, 244, 250)')">
+        <div class="logo-stock"><img src="./broker-logo1.jpg" alt="logo"></div>
+        <div class="stock-name"><a href="#"> Nifty</a></div>
+        <div class="stock-bottom">NIFTY 50 INDEX</div> 
+        <div class="rand">15000.25</div>
+        <div class="per1-1">-0.13%</div>
+        <div class="per2-1">-20.10</div>
+      </div>
+    <div class="line"></div>
+    </div>
+    <div class="more"><a href="#">More active Stocks > </a></div>
+    </div>
+    <div class="timeline-part">
+    <div class="head1">
+      <h1><a href="#"> TimeLines </a></h1>
+</div>
+<div class="hover-effect-timeline">
+<div class="top-part">
+<div class="logo-timeline"><img src="./broker-logo.png" alt="img"></div>
+<div class="head-timeline"><a href="#"> Tsla</a></div>
+<div class="date-timeline">Jun 03 . 2021</div>
+</div>
+<div class="heading-timeline">Lorem ipsum dolor sit.</div>
+<div class="content-flex">
+<div class="content-timeline">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat obcaecati laboriosam dolore? Asperiores nobis enim esse nam accusantium iure quas illum at voluptas facere assumenda nisi ut magni distinctio blanditiis, sapiente eius?</div>
+<div class="side-img"><img src="./stock-logo.png" alt="logo"></div>
+</div>
+</div>
+<div class="line"></div>
+</div>
+<div class="hover-effect-timeline">
+<div class="top-part">
+  <div class="logo-timeline"><img src="./broker-logo.png" alt="img"></div>
+  <div class="head-timeline"><a href="#"> Tsla</a></div>
+  <div class="date-timeline">Jun 03 . 2021</div>
+  </div>
+  <div class="heading-timeline">Lorem ipsum dolor sit.</div>
+  <div class="content-flex">
+  <div class="content-timeline">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat obcaecati laboriosam dolore? Asperiores nobis enim esse nam accusantium iure quas illum at voluptas facere assumenda nisi ut magni distinctio blanditiis, sapiente eius?</div>
+  <div class="side-img"><img src="./stock-logo.png" alt="logo"></div>
+  </div>
+  </div>
+  <div class="line"></div>
+  <div class="hover-effect-timeline">
+  <div class="top-part">
+    <div class="logo-timeline"><img src="./broker-logo.png" alt="img"></div>
+    <div class="head-timeline"><a href="#"> Tsla</a></div>
+    <div class="date-timeline">Jun 03 . 2021</div>
+    </div>
+    <div class="heading-timeline">Lorem ipsum dolor sit.</div>
+    <div class="content-flex">
+    <div class="content-timeline">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat obcaecati laboriosam dolore? Asperiores nobis enim esse nam accusantium iure quas illum at voluptas facere assumenda nisi ut magni distinctio blanditiis, sapiente eius?</div>
+    <div class="side-img"><img src="./stock-logo.png" alt="logo"></div>
+  </div>  
+  </div>
+  <div class="line"></div>
+    <div class="head1">
+      <h1><a href="#"> News </a></h1>
+</div>
+<div class="hover-effect-news">
+  <div class="date-news"><p> 22:30 . Jun 2 . 2021 . kaushik </p></div>
+  <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, sed!</div>
+</div>
+<div class="line"></div>
+  <div class="hover-effect-news">
+    <div class="date-news"><p> 22:30 . Jun 2 . 2021 . kaushik </p></div>
+    <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, sed!</div>
+  </div>
+  <div class="line"></div>
+  <div class="hover-effect-news">
+    <div class="date-news"><p> 22:30 . Jun 2 . 2021 . kaushik </p></div>
+    <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, sed!</div>
+  </div>
+  <div class="line"></div>
+  <div class="hover-effect-news">
+    <div class="date-news"><p> 22:30 . Jun 2 . 2021 . kaushik </p></div>
+    <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, sed!</div>
+  </div>
+  <div class="line"></div>
+  <div class="hover-effect-news">
+    <div class="date-news"><p> 22:30 . Jun 2 . 2021 . kaushik </p></div>
+    <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, sed!</div>
+  </div>
+  <div class="line"></div>
+  <div class="hover-effect-news">
+    <div class="date-news"><p> 22:30 . Jun 2 . 2021 . kaushik </p></div>
+    <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, sed!</div>
+  </div>
+  <div class="line"></div>
+  <div class="hover-effect-news">
+    <div class="date-news"><p> 22:30 . Jun 2 . 2021 . kaushik </p></div>
+    <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, sed!</div>
+  </div>
+  <div class="line"></div>
+  <div class="hover-effect-news">
+    <div class="date-news"><p> 22:30 . Jun 2 . 2021 . kaushik </p></div>
+    <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, sed!</div>
+  </div>
+  <div class="line"></div>
+  <div class="hover-effect-news">
+    <div class="date-news"><p> 22:30 . Jun 2 . 2021 . kaushik </p></div>
+    <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, sed!</div>
+  </div>
+  <div class="line"></div>
+  <div class="hover-effect-news">
+    <div class="date-news"><p> 22:30 . Jun 2 . 2021 . kaushik </p></div>
+    <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, sed!</div>
+  </div>
+  <div class="line"></div>
+    </div>
+    </div>
+    <div class="line-1"></div>
+    <div class="sec-four">
+      <div class="items-sec-four">
+        <div class="product">
+          <div class="heading"><h1>Product</h1></div>
+          <div class="content-product">
+            <a href="#">chart</a>
+            <a href="#">pie chart</a>
+            <a href="#">stock screener</a>
+            <a href="#">forex screener</a>
+            <a href="#">crypto screener</a>
+            <a href="#">chart</a>
+          </div>
+        </div>
+        <div class="product">
+          <div class="heading"><h1>Company</h1></div>
+          <div class="content-product">
+            <a href="#">About</a>
+            <a href="#">Features</a>
+            <a href="#">Pricing</a>
+            <a href="#">Wall of love</a>
+            <a href="#">Blog</a>
+            <a href="#">Status page</a>
+            <a href="#">Terms of use</a>
+            <a href="#">Disclaimer</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">cookies</a>
+            <a href="#">cookies Policy</a>
+          </div>
+        </div>
+        <div class="product">
+          <div class="heading"><h1>Community</h1></div>
+          <div class="content-product">
+            <a href="#">Refer a friend</a>
+            <a href="#">Ideas</a>
+            <a href="#">Scripts</a>
+            <a href="#">Streams</a>
+            <a href="#">House rules</a>
+            <a href="#">Moderateers</a>
+            <a href="#">chat</a>
+            <!-- <a href="#">chart</a> -->
+            <!-- <a href="#">chart</a> -->
+            <!-- <a href="#">chart</a> -->
+          </div>
+        </div>
+        <div class="product">
+          <div class="heading"><h1>For Business</h1></div>
+          <div class="content-product">
+            <a href="#">Widgets</a>
+            <a href="#">Advertising</a>
+            <a href="#">website & broker solutions</a>
+            <a href="#">charting solutions</a>
+            <a href="#">partner program</a>
+            <a href="#">chart</a>
+            <a href="#">charting solutions</a>
+          </div>
+        </div>
+      </div>      
+    </div>
+    <div class="line-2"></div>
+    <footer class="copy-right-section">
+      <p class="text-footer">
+        Copyright &copy; 2027 TradeMe - All rights reserved
+    </p>
+      <div class="social-media-buttons"><a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-google"></a>
+        <a href="#" class="fa fa-linkedin"></a>
+        <a href="#" class="fa fa-instagram"></a>
+        </div>
+    </footer>
+    <script>
+      let tabButtons = document.querySelectorAll(".tab-container .button-container button");// this will hold all buttons
+      let tabPanel = document.querySelectorAll(".tab-container .tab-panel");//this will hold all panels
+      function showpanel(panelindex,color)
+      {
+        tabButtons.forEach(function(element)
+        {
+            element.style.backgroundColor="";
+        });
+        tabButtons[panelindex].style.backgroundColor = color;
+        tabPanel.forEach(function(element)
+        {
+            element.style.display="none";
+        });
+        tabPanel[panelindex].style.display="block";
+
+      }
+      showpanel(0,'rgb(235, 244, 250)')
+      let stck = document.querySelectorAll(".stocks .stock");
+      function highlight(index,color)
+      {
+        stck.forEach(function(element){
+          element.style.backgroundColor="";
+        });
+        stck[index].style.backgroundColor=color;
+      }
+      highlight(0,'rgb(235, 244, 250)');
+    </script>
+</body>
+</html>

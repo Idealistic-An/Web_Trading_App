@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="market.css">
+    
+    <title>Market</title>
+</head>
+<body>
+    <nav class="top">
+        <div class="top-inner">
+                  <div class="logo-nav">
+                  <div class="icon-nav"><i class="fa fa-line-chart" aria-hidden="true"></i></div>
+                <div class="heading-nav"><a href="./index.html"> TradeMe</a></div>
+        </div>
+            <div class="en"><a href="#">EN</a></div>
+            <div class="searchbar">
+                  <div class="search-logo"><a href="#" class="fa fa-search"></a></div> 
+                <input type="text" placeholder="search">
+        </div>
+            <div class="sign-in"><a href="./signin/signin.html">SignIn</a></div>
+            <div class="freetrail"><button><a href="./pricing.html"> Start Free Trail</a></button> </div>
+        </div>
+        </nav>
+          <div class="dd-list">
+                  <ul>
+                      <li class="chart"><a href="#"><div class="chartt"><i class="fa fa-signal" aria-hidden="true"></i></div>Chart</a></li>
+                    <li><a href="./trade.html">Trade</a>
+                        <div class="sub-menu-1">
+                              <ul>
+                                  <li><a href="./trade.html">Top Brokers</a></li>
+                                <li><a href="./trade.html"> Brokers Awards</a></li>
+                        </ul>
+                    </div>
+                </li>
+                  <li><a href="./market.html">Markets</a>
+                        <div class="sub-menu-1">
+                              <ul>
+                                  <li><a href="./market.html">cryptocurrencies</a><i class="fa fa-angle-right"></i></li>
+                                <li><a href="./market.html">currencies</a><i class="fa fa-angle-right"></i></li>
+                                <li><a href="./market.html">stocks</a><i class="fa fa-angle-right"></i></li>
+                                <li><a href="./market.html">indices</a><i class="fa fa-angle-right"></i></li>
+                                <li><a href="./market.html">Futures</a><i class="fa fa-angle-right"></i></li>
+                                <li><a href="./market.html">bond</a><i class="fa fa-angle-right"></i></li>
+                        </ul>
+                    </div>
+                </li>
+                  <li><a href="./screener.html">Screeners</a>
+                        <div class="sub-menu-1">
+                              <ul>
+                                  <li><a href="./screener.html">Stock screener</a></li>
+                                <li><a href="./screener.html">Forex screener</a></li>
+                                <li><a href="./screener.html">Crypto screener</a></li>
+                        </ul>
+                    </div>
+                </li>
+                  <li><a href="./feed.html">Feed</a>
+                        <div class="sub-menu-1">
+                              <ul>
+                                  <li><a href="./feed.html">Ideas</a><i class="fa fa-angle-right"></i></li>
+                                <li><a href="./feed.html">Script</a><i class="fa fa-angle-right"></i></li>
+                            </ul>
+                        </div>
+                </li>
+                  <li><a href="./help.html">More</a>
+                        <div class="sub-menu-1">
+                              <ul>
+                                  <li><a href="./help.html">Help Center</a></li>
+                                <li><a href="./pricing.html">Pricing</a></li>
+                                <li><a href="./help.html">About</a><i class="fa fa-angle-right"></i></li>
+                                <li><a href="./help.html">Community</a><i class="fa fa-angle-right"></i></li>
+                                <li><a href="./help.html">For Business</a><i class="fa fa-angle-right"></i></li>
+                            </ul>
+                        </div>
+
+                </li>
+            </ul>
+        </div>
+          <div class="line-header line-header--sticky"></div>
+          <div class="sec-two">
+                <p>MARKET QUOTES</p>
+                <div class="items-in-sec-2">
+                  
+                    <a href="#">Forex</a>  
+                    <a href="#">Futures</a>  
+                    <a href="#">Indices</a>  
+                    <a href="#">Bonds</a>  
+                    <a href="#">Stocks</a>  
+                  
+                </div>
+            </div>
+        <div class="main-part">
+          <div class="left-part">
+            <div class="box-content">
+              <div class="head1">
+                <h1><a href="#"> Indices <i class="fa fa-angle-right" id="righticon"></i></a></h1>
+        </div>
+          <div class="diff-market-out">
+              <div class="tab-container">
+                <div class="button-container">
+              <button onclick="showpanel(0,'rgb(235, 244, 250)')">Major</button>
+              <button onclick="showpanel(1,'rgb(235, 244, 250)')">US</button>
+              <button onclick="showpanel(2,'rgb(235, 244, 250)')">Currency</button>
+            </div>
+            <div class="tab-panel"><img src="./nifty.jpg" alt="img1"></div>
+            <div class="tab-panel"><img src="./graph.png" alt="img2"></div>
+            <div class="tab-panel"><img src="./graph2.png" alt="img3"></div>
+            </div>
+            </div>
+            <div class="stocks">
+            <div class="stock" onclick="highlight(0,'rgb(235, 244, 250)')">
+              <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+              <div class="stock-name"><a href="#"> Nifty</a></div>
+              <div class="stock-bottom">NIFTY 50 INDEX</div> 
+              <div class="rand">15000.25</div>
+              <div class="per1-1">-0.13%</div>
+              <div class="per2-1">-20.10</div>
+            </div>
+            <div class="stock" onclick="highlight(1,'rgb(235, 244, 250)')">
+              <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+              <div class="stock-name"><a href="#">BSE SENSEX</a></div>
+              <div class="stock-bottom-1">BSE SENSEX INDEX</div> 
+              <div class="rand">15500.25</div>
+              <div class="per1-2">+1.13%</div>
+              <div class="per2-2">+50.120</div>
+            </div>
+            <div class="stock" onclick="highlight(2,'rgb(235, 244, 250)')">
+              <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+              <div class="stock-name"><a href="#"> Nifty</a></div>
+              <div class="stock-bottom">NIFTY 50 INDEX</div> 
+              <div class="rand">15040.25</div>
+              <div class="per1-3">+0.01%</div>
+              <div class="per2-3">+0.10</div>
+            </div>
+            <div class="stock" onclick="highlight(3,'rgb(235, 244, 250)')">
+              <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+              <div class="stock-name"><a href="#"> Nifty</a></div>
+              <div class="stock-bottom">NIFTY 50 INDEX</div> 
+              <div class="rand">15000.25</div>
+              <div class="per1-1">-0.13%</div>
+              <div class="per2-1">-20.10</div>
+            </div>
+          </div>
+          <div class="more"><a href="#">More Indices ideas > </a></div>
+            </div>
+            <div class="box-content">
+              <div class="head1">
+                <h1><a href="#"> currencies <i class="fa fa-angle-right" id="righticon"></i></a></h1>
+        </div>
+          <div class="diff-market-out">
+              <div class="tab-container-1">
+                <div class="button-container-1">
+              <button onclick="showpanel1(0,'rgb(235, 244, 250)')">Major</button>
+              <button onclick="showpanel1(1,'rgb(235, 244, 250)')">Minor</button>
+              <button onclick="showpanel1(2,'rgb(235, 244, 250)')">Exotic</button>
+              <button onclick="showpanel1(3,'rgb(235, 244, 250)')">Currency indices</button>
+            </div>
+            <div class="tab-panel-1"><img src="./nifty.jpg" alt="img1"></div>
+            <div class="tab-panel-1"><img src="./graph.png" alt="img2"></div>
+            <div class="tab-panel-1"><img src="./graph2.png" alt="img3"></div>
+            <div class="tab-panel-1"><img src="./graph2.png" alt="img3"></div>
+            </div>
+            </div>
+            <div class="stocks-1">
+            <div class="stock-1" onclick="highlight1(0,'rgb(235, 244, 250)')">
+              <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+              <div class="stock-name"><a href="#"> Nifty</a></div>
+              <div class="stock-bottom">NIFTY 50 INDEX</div> 
+              <div class="rand">15000.25</div>
+              <div class="per1-1">-0.13%</div>
+              <div class="per2-1">-20.10</div>
+            </div>
+            <div class="stock-1" onclick="highlight1(1,'rgb(235, 244, 250)')">
+              <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+              <div class="stock-name"><a href="#">BSE SENSEX</a></div>
+              <div class="stock-bottom-1">BSE SENSEX INDEX</div> 
+              <div class="rand">15500.25</div>
+              <div class="per1-2">+1.13%</div>
+              <div class="per2-2">+50.120</div>
+            </div>
+            <div class="stock-1" onclick="highlight1(2,'rgb(235, 244, 250)')">
+              <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+              <div class="stock-name"><a href="#"> Nifty</a></div>
+              <div class="stock-bottom">NIFTY 50 INDEX</div> 
+              <div class="rand">15040.25</div>
+              <div class="per1-3">+0.01%</div>
+              <div class="per2-3">+0.10</div>
+            </div>
+            <div class="stock-1" onclick="highlight1(3,'rgb(235, 244, 250)')">
+              <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+              <div class="stock-name"><a href="#"> Nifty</a></div>
+              <div class="stock-bottom">NIFTY 50 INDEX</div> 
+              <div class="rand">15000.25</div>
+              <div class="per1-1">-0.13%</div>
+              <div class="per2-1">-20.10</div>
+            </div>
+          </div>
+          <div class="more"><a href="#">More Indices ideas > </a></div>
+            </div>
+            <div class="box-content">
+              <div class="head1">
+                <h1><a href="#"> Stocks <i class="fa fa-angle-right" id="righticon"></i></a></h1>
+        </div>
+          <div class="diff-market-out">
+              <div class="tab-container-2">
+                <div class="button-container-2">
+              <button onclick="showpanel2(0,'rgb(235, 244, 250)')">Active</button>
+              <button onclick="showpanel2(1,'rgb(235, 244, 250)')">Gainers</button>
+              <button onclick="showpanel2(2,'rgb(235, 244, 250)')">Losers</button>
+            </div>
+            <div class="tab-panel-2"><img src="./nifty.jpg" alt="img1"></div>
+            <div class="tab-panel-2"><img src="./graph.png" alt="img2"></div>
+            <div class="tab-panel-2"><img src="./graph2.png" alt="img3"></div>
+            </div>
+            </div>
+            <div class="stocks-2">
+            <div class="stock-2" onclick="highlight2(0,'rgb(235, 244, 250)')">
+              <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+              <div class="stock-name"><a href="#"> Nifty</a></div>
+              <div class="stock-bottom">NIFTY 50 INDEX</div> 
+              <div class="rand">15000.25</div>
+              <div class="per1-1">-0.13%</div>
+              <div class="per2-1">-20.10</div>
+            </div>
+            <div class="stock-2" onclick="highlight2(1,'rgb(235, 244, 250)')">
+              <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+              <div class="stock-name"><a href="#">BSE SENSEX</a></div>
+              <div class="stock-bottom-1">BSE SENSEX INDEX</div> 
+              <div class="rand">15500.25</div>
+              <div class="per1-2">+1.13%</div>
+              <div class="per2-2">+50.120</div>
+            </div>
+            <div class="stock-2" onclick="highlight2(2,'rgb(235, 244, 250)')">
+              <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+              <div class="stock-name"><a href="#"> Nifty</a></div>
+              <div class="stock-bottom">NIFTY 50 INDEX</div> 
+              <div class="rand">15040.25</div>
+              <div class="per1-3">+0.01%</div>
+              <div class="per2-3">+0.10</div>
+            </div>
+            <div class="stock-2" onclick="highlight2(3,'rgb(235, 244, 250)')">
+              <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+              <div class="stock-name"><a href="#"> Nifty</a></div>
+              <div class="stock-bottom">NIFTY 50 INDEX</div> 
+              <div class="rand">15000.25</div>
+              <div class="per1-1">-0.13%</div>
+              <div class="per2-1">-20.10</div>
+            </div>
+          </div>
+          <div class="more"><a href="#">More Indices ideas > </a></div>
+            </div>
+          </div>
+          <div class="right-part">
+            <div class="box-content">
+              <div class="head1">
+                <h1><a href="#"> Futures <i class="fa fa-angle-right" id="righticon"></i></a></h1>
+        </div>
+          <div class="diff-market-out">
+              <div class="tab-container-3">
+                <div class="button-container-3">
+              <button onclick="showpanel3(0,'rgb(235, 244, 250)')">Energy</button>
+              <button onclick="showpanel3(1,'rgb(235, 244, 250)')">Metals</button>
+              <button onclick="showpanel3(2,'rgb(235, 244, 250)')">Agriculture</button>
+            </div>
+            <div class="tab-panel-3"><img src="./nifty.jpg" alt="img1"></div>
+            <div class="tab-panel-3"><img src="./graph.png" alt="img2"></div>
+            <div class="tab-panel-3"><img src="./graph2.png" alt="img3"></div>
+            </div>
+            </div>
+            <div class="stocks-3">
+            <div class="stock-3" onclick="highlight3(0,'rgb(235, 244, 250)')">
+              <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+              <div class="stock-name"><a href="#"> Nifty</a></div>
+              <div class="stock-bottom">NIFTY 50 INDEX</div> 
+              <div class="rand">15000.25</div>
+              <div class="per1-1">-0.13%</div>
+              <div class="per2-1">-20.10</div>
+            </div>
+            <div class="stock-3" onclick="highlight3(1,'rgb(235, 244, 250)')">
+              <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+              <div class="stock-name"><a href="#">BSE SENSEX</a></div>
+              <div class="stock-bottom-1">BSE SENSEX INDEX</div> 
+              <div class="rand">15500.25</div>
+              <div class="per1-2">+1.13%</div>
+              <div class="per2-2">+50.120</div>
+            </div>
+            <div class="stock-3" onclick="highlight3(2,'rgb(235, 244, 250)')">
+              <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+              <div class="stock-name"><a href="#"> Nifty</a></div>
+              <div class="stock-bottom">NIFTY 50 INDEX</div> 
+              <div class="rand">15040.25</div>
+              <div class="per1-3">+0.01%</div>
+              <div class="per2-3">+0.10</div>
+            </div>
+            <div class="stock-3" onclick="highlight3(3,'rgb(235, 244, 250)')">
+              <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+              <div class="stock-name"><a href="#"> Nifty</a></div>
+              <div class="stock-bottom">NIFTY 50 INDEX</div> 
+              <div class="rand">15000.25</div>
+              <div class="per1-1">-0.13%</div>
+              <div class="per2-1">-20.10</div>
+            </div>
+          </div>
+          <div class="more"><a href="#">More Indices ideas > </a></div>
+            </div>
+            <div class="box-content">
+              <div class="head1">
+                <h1><a href="#"> Bonds <i class="fa fa-angle-right" id="righticon"></i></a></h1>
+        </div>
+          <div class="diff-market-out">
+              <div class="tab-container-4">
+                <div class="button-container-4">
+              <button onclick="showpanel4(0,'rgb(235, 244, 250)')">Americans</button>
+              <button onclick="showpanel4(1,'rgb(235, 244, 250)')">Europe</button>
+              <button onclick="showpanel4(2,'rgb(235, 244, 250)')">Aisa</button>
+            </div>
+            <div class="tab-panel-4"><img src="./nifty.jpg" alt="img1"></div>
+            <div class="tab-panel-4"><img src="./graph.png" alt="img2"></div>
+            <div class="tab-panel-4"><img src="./graph2.png" alt="img3"></div>
+            </div>
+            </div>
+            <div class="stocks-4">
+            <div class="stock-4" onclick="highlight4(0,'rgb(235, 244, 250)')">
+              <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+              <div class="stock-name"><a href="#"> Nifty</a></div>
+              <div class="stock-bottom">NIFTY 50 INDEX</div> 
+              <div class="rand">15000.25</div>
+              <div class="per1-1">-0.13%</div>
+              <div class="per2-1">-20.10</div>
+            </div>
+            <div class="stock-4" onclick="highlight4(1,'rgb(235, 244, 250)')">
+              <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+              <div class="stock-name"><a href="#">BSE SENSEX</a></div>
+              <div class="stock-bottom-1">BSE SENSEX INDEX</div> 
+              <div class="rand">15500.25</div>
+              <div class="per1-2">+1.13%</div>
+              <div class="per2-2">+50.120</div>
+            </div>
+            <div class="stock-4" onclick="highlight4(2,'rgb(235, 244, 250)')">
+              <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+              <div class="stock-name"><a href="#"> Nifty</a></div>
+              <div class="stock-bottom">NIFTY 50 INDEX</div> 
+              <div class="rand">15040.25</div>
+              <div class="per1-3">+0.01%</div>
+              <div class="per2-3">+0.10</div>
+            </div>
+            <div class="stock-4" onclick="highlight4(3,'rgb(235, 244, 250)')">
+              <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+              <div class="stock-name"><a href="#"> Nifty</a></div>
+              <div class="stock-bottom">NIFTY 50 INDEX</div> 
+              <div class="rand">15000.25</div>
+              <div class="per1-1">-0.13%</div>
+              <div class="per2-1">-20.10</div>
+            </div>
+          </div>
+          <div class="more"><a href="#">More Indices ideas > </a></div>
+            </div>
+            <div class="box-content">
+              <div class="head1">
+                <h1><a href="#"> Stocks <i class="fa fa-angle-right" id="righticon"></i></a></h1>
+        </div>
+          <div class="diff-market-out">
+              <div class="tab-container-5">
+                <div class="button-container-5">
+              <button onclick="showpanel5(0,'rgb(235, 244, 250)')">Major</button>
+              <button onclick="showpanel5(1,'rgb(235, 244, 250)')">US</button>
+              <button onclick="showpanel5(2,'rgb(235, 244, 250)')">Currency</button>
+            </div>
+            <div class="tab-panel-5"><img src="./nifty.jpg" alt="img1"></div>
+            <div class="tab-panel-5"><img src="./graph.png" alt="img2"></div>
+            <div class="tab-panel-5"><img src="./graph2.png" alt="img3"></div>
+            </div>
+            </div>
+            <div class="stocks-5">
+            <div class="stock-5" onclick="highlight5(0,'rgb(235, 244, 250)')">
+              <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+              <div class="stock-name"><a href="#"> Nifty</a></div>
+              <div class="stock-bottom">NIFTY 50 INDEX</div> 
+              <div class="rand">15000.25</div>
+              <div class="per1-1">-0.13%</div>
+              <div class="per2-1">-20.10</div>
+            </div>
+            <div class="stock-5" onclick="highlight5(1,'rgb(235, 244, 250)')">
+              <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+              <div class="stock-name"><a href="#">BSE SENSEX</a></div>
+              <div class="stock-bottom-1">BSE SENSEX INDEX</div> 
+              <div class="rand">15500.25</div>
+              <div class="per1-2">+1.13%</div>
+              <div class="per2-2">+50.120</div>
+            </div>
+            <div class="stock-5" onclick="highlight5(2,'rgb(235, 244, 250)')">
+              <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+              <div class="stock-name"><a href="#"> Nifty</a></div>
+              <div class="stock-bottom">NIFTY 50 INDEX</div> 
+              <div class="rand">15040.25</div>
+              <div class="per1-3">+0.01%</div>
+              <div class="per2-3">+0.10</div>
+            </div>
+            <div class="stock-5" onclick="highlight5(3,'rgb(235, 244, 250)')">
+              <div class="logo-stock"><img src="./stock-logo.png" alt="logo"></div>
+              <div class="stock-name"><a href="#"> Nifty</a></div>
+              <div class="stock-bottom">NIFTY 50 INDEX</div> 
+              <div class="rand">15000.25</div>
+              <div class="per1-1">-0.13%</div>
+              <div class="per2-1">-20.10</div>
+            </div>
+          </div>
+          <div class="more"><a href="#">More Indices ideas > </a></div>
+            </div>
+          </div>
+        </div>
+        <div class="line-1"></div>
+        <div class="sec-four">
+          <div class="items-sec-four">
+            <div class="product">
+              <div class="heading"><h1>Product</h1></div>
+              <div class="content-product">
+                <a href="#">chart</a>
+                <a href="#">pie chart</a>
+                <a href="#">stock screener</a>
+                <a href="#">forex screener</a>
+                <a href="#">crypto screener</a>
+                <a href="#">chart</a>
+              </div>
+            </div>
+            <div class="product">
+              <div class="heading"><h1>Company</h1></div>
+              <div class="content-product">
+                <a href="#">About</a>
+                <a href="#">Features</a>
+                <a href="#">Pricing</a>
+                <a href="#">Wall of love</a>
+                <a href="#">Blog</a>
+                <a href="#">Status page</a>
+                <a href="#">Terms of use</a>
+                <a href="#">Disclaimer</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">cookies</a>
+                <a href="#">cookies Policy</a>
+              </div>
+            </div>
+            <div class="product">
+              <div class="heading"><h1>Community</h1></div>
+              <div class="content-product">
+                <a href="#">Refer a friend</a>
+                <a href="#">Ideas</a>
+                <a href="#">Scripts</a>
+                <a href="#">Streams</a>
+                <a href="#">House rules</a>
+                <a href="#">Moderateers</a>
+                <a href="#">chat</a>
+                <!-- <a href="#">chart</a> -->
+                <!-- <a href="#">chart</a> -->
+                <!-- <a href="#">chart</a> -->
+              </div>
+            </div>
+            <div class="product">
+              <div class="heading"><h1>For Business</h1></div>
+              <div class="content-product">
+                <a href="#">Widgets</a>
+                <a href="#">Advertising</a>
+                <a href="#">website & broker solutions</a>
+                <a href="#">charting solutions</a>
+                <a href="#">partner program</a>
+                <a href="#">chart</a>
+                <a href="#">charting solutions</a>
+              </div>
+            </div>
+          </div>      
+        </div>
+        <div class="line-2"></div>
+        <footer class="copy-right-section">
+          <p class="text-footer">
+            Copyright &copy; 2027 TradeMe - All rights reserved
+        </p>
+          <div class="social-media-buttons"><a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-google"></a>
+            <a href="#" class="fa fa-linkedin"></a>
+            <a href="#" class="fa fa-instagram"></a>
+            </div>
+        </footer>
+      <script src="market.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/ rel="stylesheet">
+
+<link rel="stylesheet" href="signin.css">
+<body>
+
+<div id="id01" class="modal">
+  <form class="modal-content">
+    <div class="container">
+
+      <div class="social-media">
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-google"></a>
+        <a href="#" class="fa fa-linkedin"></a>        
+      </div>
+      <div class="or"> or </div>
+      <hr>
+      <label for="email" style="
+      position: absolute;
+      margin-left: 22%;
+      margin-top: -1%;
+      "><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" required>
+      <label for="psw" style="margin-left: -39%;position: absolute;margin-top: 5%;"><b>Password</b></label>
+      
+      <input type="password" placeholder="Enter Password" name="psw" required>
+    
+      <label for="psw-repeat" style="
+      position: absolute;
+      margin-left: -39%;
+      margin-top: 5%;
+      "><b>Repeat Password</b></label>
+      
+      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+      <label style="
+      position: absolute;
+      margin-left: -39%;
+      margin-top: 5%;
+      ">
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+      </label>
+      <p style="
+      margin-left: 28.5%;
+      "> By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+      <div class="clearfix" style="
+      width: 40%;
+      margin-left: 28%;
+      ">
+        <button type="button" class="cancelbtn"><a href="../index.html">Cancel</a></button>
+        <button type="submit" class="signupbtn">Sign Up</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+var modal = document.getElementById('id01');
+
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
