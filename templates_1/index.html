@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>   
+    <link rel="stylesheet" href="/static/css/index.css">
+ 
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type=text/javascript>
+            $(function() {
+              $('a#test').on('click', function(e) {
+                e.preventDefault()
+                $.getJSON('/bookmarkit',
+                    function(data) {
+                  //do nothing
+                });
+                return false;
+              });
+            });
+    </script>
+
+
+
+</head>
+<body> 
+    <div>
+        <!-- search form -->
+        <form class="myform" action="/search" method="POST">   
+            <center> 
+                {% if loginfail %}
+                <a href="/login">Login</a>
+                <a href="/signup">Signup</a> 
+                <input type="text" name="searchfor"/> 
+                <button type="submit">Search</button>
+                <div id="profile">{{username}}</div>
+                {% else %}
+                {% if username %}
+                <a href="/logout">Logout</a>
+                <input type="text" name="searchfor"/> 
+                <button type="submit">Search</button>
+                <div id="profile">{{username}}</div> 
+                {% else %}
+                <a href="/login">Login</a> &nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;
+                <a href="/signup">Signup</a>
+                <input type="text" name="searchfor"/>
+                <button type="submit">Search</button>
+                {% endif %}
+                {% endif %}
+                </center>
+        </form>
+        {% if username %} 
+        {% if bookmarks %}
+           {% for bookmark in bookmarks %} 
+            <a href="/api/{{bookmark}}"> {{bookmark}}</a>&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;
+        <a href="/delete/{{bookmark}}"><button>X</button></a>
+           {% endfor %}   
+        {% endif %}
+        {% endif %} 
+        </br> 
+            {% if symbols_list %} 
+                {% for symbol in symbols_list %}
+                  <a href="/api/{{symbol}}"> {{symbol}}</a>
+        </br>
+                {% endfor %}
+            {% endif %} 
+            <div></div>
+            {% if homeNews %}
+                {% for i in range(homeNews|length) %}
+                <a href="">{{homeNews[i]["content"]["title"]}}</a>
+    </br>
+                {% endfor %}
+            {% endif %} 
+
+        <!-- displaying the contents of particular stocks -->
+      <!--  <div class="content">
+            {% if response %}   
+            <h3 style="color: black;">News:</h1> 
+            {% for i in range(newslen) %}
+            <a href="{{response['news'][i]['link']}}" target="_blank">{{response['news'][i]['title']}}</a>  
+            {% endfor %}
+            {% endif %} 
+        </div>
+        -->
+         <!-- particular stock details -->
+            {% if news %}   
+            <div class="content">
+                <div id="stock-value">{{stockValue}}({{symbol}})</div> 
+                {% if username %}
+                <form action="/bookmarkit" method="POST">
+                    <a href=# id=test><button type="submit" value="{{symbol}}" name="stock">Add to bookmark</button></a>
+                </form>
+                {% endif %}
+            <div class="quotes-graph">
+                <div id="quotes"> 
+                <div class="quote-column">
+                 <text>Previous Close : {{quotes["quoteResponse"]["result"][0]["regularMarketPreviousClose"]}}</text>   
+                    <text>Open : {{quotes["quoteResponse"]["result"][0]["regularMarketOpen"]}}</text>
+                    <text>Volume : {{quotes["quoteResponse"]["result"][0]["regularMarketVolume"]}}</text>
+                </div> 
+                <div class="quote-column"> 
+                    <text>Market Cap : {{quotes["quoteResponse"]["result"][0]["marketCap"]}}</text>
+                    <text>Beta : {{quotes["quoteResponse"]["result"][0]["beta"]}}</text>
+                    <text>PE Ratio(TTM) : {{quotes["quoteResponse"]["result"][0]["trailingPE"]}}</text>
+                </div> 
+                </div> 
+               <div id="graph">
+                   
+               </div>
+            </div>
+            <div id="news-details">
+                <div>
+                    {% for i in range(news["news"]|length) %}
+                <div id="news">
+                <a id="news-item" href="{{news['news'][i]['link']}}" target="_blank">{{news['news'][i]['title']}}</a>  
+                </div> 
+                {% endfor %}
+                </div> 
+                <div>
+                    <table> 
+                    <h3>People also watch</h3> 
+                        <tr>
+                            <th>Symbols</th>
+                            <th>Last Price</th>
+                            <th>Change</th>
+                            <th>%Change</th>
+                        </tr> 
+                        {% for i in range(recs["finance"]["result"][0]["count"]) %}
+                        <tr> 
+                            <td>{{recs["finance"]["result"][0]["quotes"][i]["symbol"]}}</td>
+                            <td>{{recs["finance"]["result"][0]["quotes"][i]["regularMarketPrice"]}}</td>
+                            <td>{{recs["finance"]["result"][0]["quotes"][i]["regularMarketChange"]}}</td>
+                            <td>{{recs["finance"]["result"][0]["quotes"][i]["regularMarketChangePercent"]}}</td> 
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                
+            </div> 
+        </div>
+        {% endif %}  
+    </div>
+
+</body> 
+<script>
+    
+</script>
+</html>

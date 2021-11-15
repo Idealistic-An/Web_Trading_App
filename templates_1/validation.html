@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+	<style>
+	div {
+  border: 15px solid green;
+  margin: 20px;
+  background-color: lightgrey;
+}
+
+	</style>
+    <script>
+        var divs = new Array();
+        divs[0]="errFirst" ;
+        divs[1]="errEmail";
+        divs[2]="psswrd";
+        divs[3]="errMobile";
+
+        function validate()
+        {
+            var inputs= new Array();
+            inputs[0]=document.getElementById('first').value;
+            inputs[1]=document.getElementById('email').value;
+            inputs[2]=document.getElementById('psd').value;
+            inputs[3]=document.getElementById('phone').value;
+
+            var errors = new Array();
+            errors[0]="<span style='color:blue'>Please Enter Name!!</span>";
+            errors[1]="<span style='color:blue'>Please Enter Email id!!</span>";
+            errors[2]="<span style='color:blue'>Please Enter Password!!</span>";
+            errors[3]="<span style='color:blue'>Please Enter Phone Number!!</span>";
+
+            for(i in inputs)
+            {
+                var errMessage=errors[i];
+                var div = divs[i];
+                if(inputs[i]=="")
+                document.getElementById(div).innerHTML=errMessage;
+                else if(i==0)
+                {
+                    var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
+                    var nam = document.getElementById('first').value;
+                    if(!regName.test(nam)||nam.length<6)
+                    document.getElementById('errFirst').innerHTML="<span style='color:blue'>Please enter a 6 digit or more name!!</span>";
+                    else
+                    document.getElementById(div).innerHTML="OK!!"
+                    
+                }
+                else if (i==1) 
+                {
+                    var atpos=inputs[i].indexOf("@");
+                    var dotpos=inputs[i].indexOf(".");
+                    if(atpos<1 || dotpos<atpos+2 ||dotpos+2>=inputs[i].length)
+                        document.getElementById('errEmail').innerHTML="<span style='color:blue'>Please Enter Valid email id!!</span>";
+                    else
+                    document.getElementById(div).innerHTML="OK!!"
+                }
+                else if (i==2)
+                {
+                    var p= document.getElementById('psd').value;
+                    if(p.length<6)
+                    document.getElementById(div).innerHTML="<span style='color:blue'>Please enter a 6 digit or Password!!</span>";
+                    else
+                    document.getElementById(div).innerHTML="OK!!"
+                    
+                }
+                else if(i==3)
+                {
+                    var pnum=document.getElementById('phone').value;
+                    if(pnum.length==10)
+                    document.getElementById(div).innerHTML="OK!!"
+                    else
+                    document.getElementById('errMobile').innerHTML="<span style='color:blue'>Please Enter Valid Phone number!!</span>";
+
+                }
+                else
+                document.getElementById(div).innerHTML="OK!!"
+
+            }
+
+        }
+
+    </script>
+
+</head>
+<body>
+	<center>
+	<div class="boxy">
+	<form action="/signup/user" method="POST">
+    <table id="table1">
+
+        <caption>Registration Form</caption>
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-google"></a>
+        <a href="#" class="fa fa-linkedin"></a> 
+        <tr>
+        
+        <td>Name : </td>
+        
+        <td><input type="text" name="user" id="first" required/></td> 
+        <td><div id="errFirst"></div></td>
+        
+        </tr>
+        
+        
+        <tr>
+        
+        <td>Email:</td>
+        
+        <td><input type="text" name="email" id="email" required/></td> 
+        <td><div id="errEmail"></div></td>
+        
+        </tr>
+        
+        <tr>
+        
+        <td>Password:</td>
+        
+        <td><input type="password" name="password" id="psd" required/></td> 
+        <td><div id="psswrd"></div></tà>
+        
+        </tr> 
+        <tr>
+
+            <td>Phone Number:</td>
+            
+            <td><input type="number" name="phone"  id="phone" required/></td> 
+            <td><div id="errMobile"></div></td>
+            
+            </tr> 
+            <tr>
+            
+			&nbsp; &nbsp;&nbsp;
+            <td>         
+			    <button type="submit" id="create" value="SIGNUP" onclick="validate()"/> Sign up</button></td>
+                <td><div id="errFinal">
+				</div></td>
+           
+            </tr>
+            
+            </table>
+		</form>	
+</div>
+</center>        
+</body>
+</html>
