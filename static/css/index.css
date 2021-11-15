@@ -1,0 +1,106 @@
+html{
+  height: 100%;
+}  
+
+input[type=text] {
+  width: 15%;
+  padding: 15px;
+  margin: 10px 0 30px 50px;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+ input[type=text]:focus{
+  background-color: #ddd;
+  outline: none;
+}
+ 
+#profile{
+  color: #00A0C6;
+  margin-left: 20px;
+}
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 10%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+a {
+  color: #0060B6;
+  text-decoration: none;
+}
+
+a:hover {
+  color:#00A0C6; 
+  text-decoration:none; 
+  cursor:pointer;  
+} 
+#stock-value{
+  font-size: xx-large;
+  font-weight:bold;
+}
+.content{ 
+  margin: 3%;
+  padding-left: 2%;
+}
+.content .quotes-graph{
+  display: flex;
+  flex-direction: row; 
+}
+#quotes{
+  display: flex;
+  flex-direction: row;
+  border-style: solid;
+  border-color: grey;
+  border-width: 0.1px;
+  
+}
+.quote-column{
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+#graph{
+  margin-left: 3%;
+  padding: 40px;
+  border-style: solid; 
+  border-color: brown;
+}
+ 
+#news{
+  display: flex;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-right: 2%;
+}
+#news-details{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+table {
+  border: 1px solid #CCC;
+  border-collapse: collapse;
+}
+
+td, th {
+  border: none;
+  padding: 0 15px;
+  
+}
+th {
+  background-color: #04AA6D;
+  color: white;
+}
+
+
